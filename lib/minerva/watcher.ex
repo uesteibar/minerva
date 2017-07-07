@@ -8,6 +8,9 @@ defmodule Minerva.Watcher do
   end
 
   def callback(file_path, events) do
-    Minerva.test(file_path)
+    cond do
+      :modified in events -> Minerva.test(file_path)
+      true -> nil
+    end
   end
 end
