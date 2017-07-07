@@ -21,6 +21,8 @@ defmodule Minerva.Koans do
 
   defmacro koan(description, do: test_block) do
     test_func = String.to_atom(description)
+    code = test_block |> Macro.to_string |> String.split("\n") |> List.delete_at(0)
+    code = code |> List.delete_at(length(code) - 1) |> Enum.join("\r\n\r\n")
 
     quote do
       @tests {unquote(test_func), unquote(description)}
@@ -28,6 +30,7 @@ defmodule Minerva.Koans do
         var!(description) = unquote(description)
         var!(module) = __MODULE__ |> Module.split |> List.last
         var!(___) = "___"
+        var!(code) = unquote(code)
         try do
           unquote(test_block)
         rescue
@@ -37,10 +40,9 @@ defmodule Minerva.Koans do
     end
   end
 
-  defmacro assert({operator, _, [left, right]} = code) do
-    code = Macro.escape(code)
+  defmacro assert({operator, _, [left, right]}) do
     quote bind_quoted: [
-      operator: operator, left: left, right: right, code: code
+      operator: operator, left: left, right: right
     ] do
       Assertions.assert(
         operator,
@@ -49,7 +51,7 @@ defmodule Minerva.Koans do
         %{
           description: var!(description),
           module: var!(module),
-          code: Macro.to_string(code)
+          code: var!(code)
         }
       )
     end
