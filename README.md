@@ -76,7 +76,29 @@ You can now run your project with
 mix run --no-halt
 ```
 
-And enjoy!
+You'll see something like:
+```
+Welcome to the koan!
+######################
+
+The exercises are found somewhere under lib/my_app/koans.
+Just fill the gaps (anywhere you see ___, that's a gap),
+save the file and come back here!
+
+Module: AwesomeKoan
+Koan:   You can compare variables
+
+  var = ___
+
+  assert(1 == var)
+
+Meditate a little bit and try again =)
+```
+
+Time to go to your editor and start filling the gaps!
+The code will be reloaded and the koans will run every time you save a koan file.
+
+Enjoy!
 
 Documentation can be found on [HexDocs](https://hexdocs.pm/minerva).
 
