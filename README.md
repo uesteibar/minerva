@@ -20,7 +20,7 @@ Add `minerva` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:minerva, "~> 0.1.1"}]
+  [{:minerva, "~> 0.2.0"}]
 end
 ```
 

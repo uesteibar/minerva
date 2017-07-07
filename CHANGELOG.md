@@ -1,3 +1,12 @@
+<a name="https://github.com/uesteibar/minerva/tree/v0.2.0">0.2.0</a>
+#  (2017-07-07)
+
+
+### Features
+
+* **koan:** Show all the code in koan when printing error ([7c1b230](https://github.com/uesteibar/minerva/commit/7c1b230))
+
+
 <a name="https://github.com/uesteibar/minerva/tree/v0.1.1">0.1.1</a>
 #  (2017-07-07)
 
