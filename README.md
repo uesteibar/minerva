@@ -61,7 +61,7 @@ defmodule MyApp.AwesomeKoan do
 end
 ```
 
-See that `___` represents a gap the user should feel to make the koan pass.
+See that `___` represents a gap the user should fill to make the koan pass.
 
 You can now run your project with
 ```
