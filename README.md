@@ -12,6 +12,7 @@ With very little setup, it will allow you to write koans in plain elixir and run
 - [Usage](#usage)
 - [Running Locally](#running-locally)
 - [Contributing](#contributing)
+- [Credits](#credits)
 
 ## Installation
 
@@ -26,6 +27,8 @@ end
 ## Usage
 
 Add it to your supervision tree, passing a list of your koan modules as argument.
+
+In your `application.ex` file (If you're in a supervised project):
 ```elixir
 def start(_type, _args) do
   import Supervisor.Spec, warn: false
@@ -37,6 +40,11 @@ def start(_type, _args) do
   opts = [strategy: :one_for_one, name: MyApp.Supervisor]
   Supervisor.start_link(children, opts)
 end
+```
+
+Or you can just start up the server with:
+```elixir
+Minerva.start_link([MyApp.AwesomeKoan])
 ```
 
 In your `config.exs` file, let `minerva` know where your koans live:
@@ -118,3 +126,7 @@ Instead of `git commit`, you can now run
 git cz
 ```
 and follow the instructions to generate the commit message.
+
+## Credits
+
+Thanks to [elixir-koans](https://github.com/elixirkoans/elixir-koans) for the inspiration.
