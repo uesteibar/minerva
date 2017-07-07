@@ -6,13 +6,14 @@ Minerva is a framework for [Elixir](http://elixir-lang.org/) that will allow you
 
 With very little setup, it will allow you to write koans in plain elixir and run them automagically every time the user modifies the file.
 
+The DSL is inspired in [elixir-koans](https://github.com/elixirkoans/elixir-koans). Thanks!
+
 ## Index
 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Running Locally](#running-locally)
 - [Contributing](#contributing)
-- [Credits](#credits)
 
 ## Installation
 
@@ -148,7 +149,3 @@ Instead of `git commit`, you can now run
 git cz
 ```
 and follow the instructions to generate the commit message.
-
-## Credits
-
-Thanks to [elixir-koans](https://github.com/elixirkoans/elixir-koans) for the inspiration.
