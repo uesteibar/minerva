@@ -1,3 +1,12 @@
+<a name="https://github.com/uesteibar/minerva/tree/v0.2.4">0.2.4</a>
+#  (2017-07-08)
+
+
+### Bug Fixes
+
+* **failures:** Fix startup error by printing failures outside of assertions ([bd22968](https://github.com/uesteibar/minerva/commit/bd22968))
+
+
 <a name="https://github.com/uesteibar/minerva/tree/v0.2.3">0.2.3</a>
 #  (2017-07-08)
 
