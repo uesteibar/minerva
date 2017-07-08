@@ -33,7 +33,7 @@ defmodule Minerva.Koans do
         try do
           unquote(test_block)
         rescue
-          _ ->
+          _ -> assert(false)
         end
       end
     end
@@ -63,7 +63,7 @@ defmodule Minerva.Koans do
         %{
           description: var!(description),
           module: var!(module),
-          code: boolean,
+          code: var!(code),
         }
       )
     end
