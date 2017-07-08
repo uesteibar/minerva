@@ -1,3 +1,12 @@
+<a name="https://github.com/uesteibar/minerva/tree/v0.2.3">0.2.3</a>
+#  (2017-07-08)
+
+
+### Bug Fixes
+
+* **assertions:** Make koan fail when any assertion fails ([a922a53](https://github.com/uesteibar/minerva/commit/a922a53))
+
+
 <a name="https://github.com/uesteibar/minerva/tree/v0.2.2">0.2.2</a>
 #  (2017-07-08)
 
