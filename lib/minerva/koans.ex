@@ -21,8 +21,7 @@ defmodule Minerva.Koans do
 
   defmacro koan(description, do: test_block) do
     test_func = String.to_atom(description)
-    code = test_block |> Macro.to_string |> String.split("\n") |> List.delete_at(0)
-    code = code |> List.delete_at(length(code) - 1) |> Enum.join("\r\n\r\n")
+    code = cleanup_code(test_block)
 
     quote do
       @tests {unquote(test_func), unquote(description)}
@@ -68,5 +67,15 @@ defmodule Minerva.Koans do
         }
       )
     end
+  end
+
+  defp cleanup_code(ast) do
+    code = ast |> Macro.to_string |> String.split("\n")
+    if List.first(code) == "(" do
+      code = code |> List.delete_at(0)
+      code = code |> List.delete_at(length(code) - 1)
+    end
+
+    code |> Enum.join("\r\n\r\n")
   end
 end
