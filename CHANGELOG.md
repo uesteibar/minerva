@@ -1,3 +1,12 @@
+<a name="https://github.com/uesteibar/minerva/tree/v0.2.2">0.2.2</a>
+#  (2017-07-08)
+
+
+### Bug Fixes
+
+* **koan:** Run koan even if there's an exception ([693b717](https://github.com/uesteibar/minerva/commit/693b717))
+
+
 <a name="https://github.com/uesteibar/minerva/tree/v0.2.1">0.2.1</a>
 #  (2017-07-08)
 
