@@ -4,28 +4,32 @@ defmodule Minerva.Assertions do
   alias Minerva.Print
 
   def run(tests, module) do
-    Enum.all?(tests, fn {test_func, _} ->
-      apply(module, test_func, []) != :fail
+    Enum.all?(tests, fn {test_func, description, code} ->
+      module_name = module |> Module.split |> List.last
+      result = module
+        |> apply(test_func, [])
+        |> handle_result(%{code: code, description: description, module: module_name})
+
+      result != :fail
     end)
   end
 
-  def assert(operator, left, right, meta) do
+  def assert(operator, left, right) do
     {operator, left, right}
     |> do_assert
-    |> handle_result(meta)
   end
 
-  def assert(boolean, meta) do
+  def assert(boolean) do
     case boolean do
-      true -> handle_result(:ok, meta)
-      _ -> handle_result(:fail, meta)
+      true -> :ok
+      _ -> raise(:fail)
     end
   end
 
   defp do_assert({operator, left, right}) do
     case apply(Kernel, operator, [left, right]) do
       true -> :ok
-      _ -> :fail
+      _ -> raise(:fail)
     end
   end
 

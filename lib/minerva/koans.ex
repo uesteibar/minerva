@@ -24,12 +24,9 @@ defmodule Minerva.Koans do
     code = cleanup_code(test_block)
 
     quote do
-      @tests {unquote(test_func), unquote(description)}
+      @tests {unquote(test_func), unquote(description), unquote(code)}
       def unquote(test_func)() do
-        var!(description) = unquote(description)
-        var!(module) = __MODULE__ |> Module.split |> List.last
         var!(___) = "___"
-        var!(code) = unquote(code)
         try do
           unquote(test_block)
         rescue
@@ -43,29 +40,13 @@ defmodule Minerva.Koans do
     quote bind_quoted: [
       operator: operator, left: left, right: right
     ] do
-      Assertions.assert(
-        operator,
-        left,
-        right,
-        %{
-          description: var!(description),
-          module: var!(module),
-          code: var!(code)
-        }
-      )
+      Assertions.assert(operator, left, right)
     end
   end
 
   defmacro assert(boolean) do
     quote bind_quoted: [boolean: boolean] do
-      Assertions.assert(
-        boolean,
-        %{
-          description: var!(description),
-          module: var!(module),
-          code: var!(code),
-        }
-      )
+      Assertions.assert(boolean)
     end
   end
 
