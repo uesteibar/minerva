@@ -1,3 +1,12 @@
+<a name="https://github.com/uesteibar/minerva/tree/v0.2.1">0.2.1</a>
+#  (2017-07-08)
+
+
+### Bug Fixes
+
+* **koan:** Show code even when only one line in koan ([f514777](https://github.com/uesteibar/minerva/commit/f514777))
+
+
 <a name="https://github.com/uesteibar/minerva/tree/v0.2.0">0.2.0</a>
 #  (2017-07-07)
 
