@@ -1,6 +1,21 @@
 defmodule Minerva.Print do
   @moduledoc false
 
+  def failure(%{code: code, module: module, description: description}) do
+    module_name = module |> Module.split |> List.last
+
+    IO.puts """
+    Module: #{module_name}
+    Koan:   #{description}
+
+    #{red(code)}
+
+    #{blue("Meditate a little bit and try again =)")}
+    """
+
+    :fail
+  end
+
   def instructions do
     """
     Welcome to the koan!

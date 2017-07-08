@@ -1,7 +1,7 @@
 defmodule Minerva.Koans do
   @moduledoc false
 
-  alias Minerva.Assertions
+  alias Minerva.{Assertions, Print}
 
   defmacro __using__(_options) do
     quote do
@@ -30,7 +30,12 @@ defmodule Minerva.Koans do
         try do
           unquote(test_block)
         rescue
-          _ -> assert(false)
+          _ ->
+            Print.failure(%{
+              code: unquote(code),
+              description: unquote(description),
+              module: unquote(__MODULE__),
+            })
         end
       end
     end
