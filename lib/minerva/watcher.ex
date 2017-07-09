@@ -7,10 +7,12 @@ defmodule Minerva.Watcher do
     IO.puts "STOP"
   end
 
-  def callback(file_path, events) do
+  def callback(filepath, events) do
     cond do
-      :modified in events -> Minerva.test(file_path)
-      true -> nil
+      :modified in events && Path.extname(filepath) == ".ex" ->
+        Minerva.test(filepath)
+      true ->
+        nil
     end
   end
 end
