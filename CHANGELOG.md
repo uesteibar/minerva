@@ -1,3 +1,13 @@
+<a name="https://github.com/uesteibar/minerva/tree/v0.2.5">0.2.5</a>
+#  (2017-07-09)
+
+
+### Bug Fixes
+
+* **warnings:** Remove all warnings except the ___ issues ([4b22ef4](https://github.com/uesteibar/minerva/commit/4b22ef4))
+* **watcher:** Don't break after :wq from vim ([2238524](https://github.com/uesteibar/minerva/commit/2238524))
+
+
 <a name="https://github.com/uesteibar/minerva/tree/v0.2.4">0.2.4</a>
 #  (2017-07-08)
 
