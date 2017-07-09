@@ -24,9 +24,9 @@ defmodule Minerva.Koans do
     code = cleanup_code(test_block)
 
     quote do
-      @tests {unquote(test_func), unquote(description), unquote(code)}
+      @tests {unquote(test_func), unquote(description)}
       def unquote(test_func)() do
-        var!(___) = "___"
+        var!(___) = nil
         try do
           unquote(test_block)
         rescue
@@ -42,10 +42,8 @@ defmodule Minerva.Koans do
   end
 
   defmacro assert({operator, _, [left, right]}) do
-    quote bind_quoted: [
-      operator: operator, left: left, right: right
-    ] do
-      Assertions.assert(operator, left, right)
+    quote bind_quoted: [operator: operator, left: left, right: right] do
+      Assertions.assert({operator, left, right})
     end
   end
 
@@ -56,12 +54,19 @@ defmodule Minerva.Koans do
   end
 
   defp cleanup_code(ast) do
-    code = ast |> Macro.to_string |> String.split("\n")
-    if List.first(code) == "(" do
-      code = code |> List.delete_at(0)
-      code = code |> List.delete_at(length(code) - 1)
-    end
+    ast
+    |> Macro.to_string
+    |> String.split("\n")
+    |> remove_parethesis()
+    |> Enum.join("\r\n\r\n")
+  end
 
-    code |> Enum.join("\r\n\r\n")
+  defp remove_parethesis(ast) do
+    case List.first(ast) do
+      "(" ->
+        ast |> List.delete_at(0) |> List.delete_at(length(ast) - 2)
+      _ ->
+        ast
+    end
   end
 end

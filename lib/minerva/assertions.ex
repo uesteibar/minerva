@@ -2,7 +2,7 @@ defmodule Minerva.Assertions do
   @moduledoc false
 
   def run(tests, module) do
-    Enum.all?(tests, fn {test_func, description, code} ->
+    Enum.all?(tests, fn {test_func, _} ->
 
       result = module
         |> apply(test_func, [])
@@ -11,7 +11,7 @@ defmodule Minerva.Assertions do
     end)
   end
 
-  def assert(operator, left, right) do
+  def assert({operator, left, right}) do
     {operator, left, right}
     |> do_assert
   end
